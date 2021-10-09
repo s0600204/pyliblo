@@ -43,6 +43,11 @@ cdef extern from 'lo/lo.h':
         LO_UNIX
         LO_TCP
 
+    cdef enum:
+        LO_SLIP_NONE
+        LO_SLIP_SINGLE
+        LO_SLIP_DOUBLE
+
     ctypedef void(*lo_err_handler)(int num, const_char *msg, const_char *where)
     ctypedef int(*lo_method_handler)(const_char *path, const_char *types, lo_arg **argv, int argc, lo_message msg, void *user_data)
     ctypedef int(*lo_bundle_start_handler)(lo_timetag time, void *user_data)
@@ -81,7 +86,7 @@ cdef extern from 'lo/lo.h':
     char *lo_address_get_hostname(lo_address a)
     char *lo_address_get_port(lo_address a)
     int lo_address_get_protocol(lo_address a)
-    int lo_address_set_stream_slip(lo_address a, int enable)
+    int lo_address_set_stream_slip(lo_address a, int encoding)
     const_char* lo_address_errstr(lo_address a)
 
     # message

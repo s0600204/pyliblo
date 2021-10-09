@@ -90,6 +90,12 @@ TCP  = LO_TCP
 UNIX = LO_UNIX
 
 
+# slip ENDings
+SLIP_NONE = LO_SLIP_NONE
+SLIP_SINGLE = LO_SLIP_SINGLE
+SLIP_DOUBLE = LO_SLIP_DOUBLE
+
+
 ################################################################################
 #  timetag
 ################################################################################
@@ -842,8 +848,8 @@ cdef class Address:
     def get_protocol(self):
         return lo_address_get_protocol(self._address)
 
-    def set_slip_enabled(self, enable):
-        lo_address_set_stream_slip(self._address, int(enable))
+    def set_slip_enabled(self, encoding):
+        lo_address_set_stream_slip(self._address, int(encoding))
 
     property url:
         """
