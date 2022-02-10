@@ -245,8 +245,13 @@ cdef int _msg_callback(const_char *path, const_char *types, lo_arg **argv,
 
         args.append(v)
 
-    src = _Address()
-    src._address = lo_message_get_source(msg)
+    _address = lo_message_get_source(msg)
+    _proto = lo_address_get_protocol(_address)
+    if _proto == LO_UDP:
+        src = Address(lo_address_get_url(_address))
+    elif _proto == LO_TCP:
+        src = _Address()
+        src._address = _address
 
     cb = <object>cb_data
 
