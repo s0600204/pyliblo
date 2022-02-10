@@ -17,9 +17,6 @@ except ImportError:
     from distutils.core import setup, Extension
     args = {}
 
-from Cython.Distutils import build_ext
-
-
 class build_scripts_rename(build_scripts):
     def copy_scripts(self):
         build_scripts.copy_scripts(self)
@@ -34,7 +31,6 @@ class build_scripts_rename(build_scripts):
 
 cmdclass = {
     'build_scripts': build_scripts_rename,
-    'build_ext': build_ext,
 }
 
 ext_modules = [
@@ -69,6 +65,8 @@ setup(
             'scripts/dump_osc.1',
         ]),
     ],
+    setup_requires = ['cython'],
+    install_requires = ['cython'],
     cmdclass = cmdclass,
     ext_modules = ext_modules,
     **args
