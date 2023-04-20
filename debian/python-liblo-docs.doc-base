@@ -1,0 +1,9 @@
+Document: python-liblo
+Title: Pyliblo Manual
+Author: 
+Abstract: wrapper around liblo
+Section: Sound
+
+Format: HTML
+Index: /usr/share/doc/python-liblo-docs/index.html
+Files: /usr/share/doc/python-liblo-docs/*.html

@@ -1,0 +1,72 @@
+Source: pyliblo
+Section: devel
+Priority: optional
+Maintainer: Debian Multimedia Maintainers <debian-multimedia@lists.debian.org>
+Uploaders:
+ Free Ekanayaka <freee@debian.org>,
+ Jaromír Mikeš <mira.mikes@seznam.cz>
+Build-Depends:
+ debhelper-compat (= 12),
+ dh-python,
+ liblo-dev (>= 0.27~repack),
+ cython3,
+ python3-all-dev,
+ python3-setuptools,
+ python3-sphinx,
+ sphinx-common
+Standards-Version: 4.6.0
+Vcs-Git: https://salsa.debian.org/multimedia-team/pyliblo.git
+Vcs-Browser: https://salsa.debian.org/multimedia-team/pyliblo
+Homepage: http://das.nasophon.de/pyliblo/
+Rules-Requires-Root: no
+
+Package: python3-liblo
+Section: python
+Architecture: any
+Depends:
+ ${misc:Depends},
+ ${python3:Depends},
+ ${shlibs:Depends},
+Suggests:
+ pyliblo-utils,
+ python-liblo-docs
+Description: Python 3 bindings for liblo, the lightweight OSC library
+ pyliblo, provides Python 3 bindings for liblo,
+ which is an implementation of the Open Sound Control specification
+ and facilitates communication between various music applications.
+ .
+ Open Sound Control (OSC) is a protocol for communication among computers,
+ sound synthesizers, and other multimedia devices that is optimized for modern
+ networking technology.
+
+Package: pyliblo-utils
+Section: utils
+Architecture: all
+Depends:
+ python3-liblo,
+ ${misc:Depends},
+ ${python3:Depends},
+Suggests: python-liblo-docs
+Description: Command line utilities for sending and receiving OSC messages
+ This package contains the send_osc and dump_osc utilities, which can be
+ used to send OSC messages from a command line, and to print all incoming
+ messages.
+ .
+ Open Sound Control (OSC) is a protocol for communication among computers,
+ sound synthesizers, and other multimedia devices that is optimized for modern
+ networking technology.
+
+Package: python-liblo-docs
+Architecture: all
+Section: doc
+Depends:
+ ${misc:Depends},
+ ${sphinxdoc:Depends},
+Built-Using:
+ ${sphinxdoc:Built-Using},
+Description: Python bindings for liblo, the lightweight OSC library
+ pyliblo, provides Python bindings for liblo, which is an implementation
+ of the Open Sound Control specification and facilitates communication
+ between various music applications.
+ .
+ This is the common documentation package.

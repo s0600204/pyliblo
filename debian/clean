@@ -1,0 +1,4 @@
+liblo*.so
+src/liblo.c
+test/__pycache__/*.pyc
+test/*.pyc

@@ -1,0 +1,3 @@
+version=3
+
+http://das.nasophon.de/download/pyliblo-([\d]+\.[\d]+(?:\.[\d]+|)).tar.gz

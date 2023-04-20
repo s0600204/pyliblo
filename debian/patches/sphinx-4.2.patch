@@ -1,0 +1,40 @@
+Description: Compatibility with sphinx 4.2
+ Drop the monkey patching of PyClassmember; this no longer exists and
+ the monkey patching doesn't appear to change the output of the current
+ docs
+Author: Steve Langasek <steve.langasek@ubuntu.com>
+Bug-Debian: https://bugs.debian.org/997324
+Last-Update: 2021-11-17
+
+Index: pyliblo-0.10.0/doc/conf.py
+===================================================================
+--- pyliblo-0.10.0.orig/doc/conf.py
++++ pyliblo-0.10.0/doc/conf.py
+@@ -30,7 +30,7 @@
+ 
+ from sphinx.ext.autodoc import py_ext_sig_re
+ from sphinx.util.docstrings import prepare_docstring
+-from sphinx.domains.python import PyClassmember, PyObject, py_sig_re
++from sphinx.domains.python import PyObject, py_sig_re
+ 
+ 
+ def process_docstring(app, what, name, obj, options, lines):
+@@ -62,18 +62,6 @@
+     return (signature, return_annotation)
+ 
+ 
+-# monkey-patch PyClassmember.handle_signature() to replace __init__
+-# with the class name.
+-handle_signature_orig = PyClassmember.handle_signature
+-def handle_signature(self, sig, signode):
+-    if '__init__' in sig:
+-        m = py_sig_re.match(sig)
+-        name_prefix, name, arglist, retann = m.groups()
+-        sig = sig.replace('__init__', name_prefix[:-1])
+-    return handle_signature_orig(self, sig, signode)
+-PyClassmember.handle_signature = handle_signature
+-
+-
+ # prevent exception fields from collapsing
+ PyObject.doc_field_types[2].can_collapse = False
+ 

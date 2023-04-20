@@ -1,0 +1,4 @@
+Tests: python3-liblo
+Depends:
+ python3-all,
+ python3-liblo,

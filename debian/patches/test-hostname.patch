@@ -1,0 +1,17 @@
+Description: Use localhost for testing TCP connection
+ With an unspecified hostname in the test, the server connection will be made
+ using the hostname of the machine; this is not necessarily resolvable within
+ a buildd chroot.
+Author: Stuart Prescott <stuart@debian.org>
+Bug: #915205
+--- a/test/test_liblo.py
++++ b/test/test_liblo.py
+@@ -222,7 +222,7 @@
+ 
+     def testSendReceive(self):
+         self.server.add_method('/foo', 'i', self.callback)
+-        liblo.send(self.server.url, '/foo', 123)
++        liblo.send('osc.tcp://127.0.0.1:1234', '/foo', 123)
+         self.assertTrue(self.server.recv())
+         self.assertEqual(self.cb.path, '/foo')
+         self.assertEqual(self.cb.args[0], 123)

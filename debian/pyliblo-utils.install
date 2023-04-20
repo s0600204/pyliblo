@@ -1,0 +1,2 @@
+build/scripts-3*/dump_osc /usr/bin
+build/scripts-3*/send_osc /usr/bin
