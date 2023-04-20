@@ -8,15 +8,15 @@ Uploaders:
 Build-Depends:
  debhelper-compat (= 12),
  dh-python,
- liblo-dev (>= 0.27~repack),
+ liblo-dev (>= 0.32-pre.1),
  cython3,
  python3-all-dev,
  python3-setuptools,
  python3-sphinx,
  sphinx-common
 Standards-Version: 4.6.0
-Vcs-Git: https://salsa.debian.org/multimedia-team/pyliblo.git
-Vcs-Browser: https://salsa.debian.org/multimedia-team/pyliblo
+Vcs-Git: https://github.com/s0600204/pyliblo.git
+Vcs-Browser: https://github.com/s0600204/pyliblo
 Homepage: http://das.nasophon.de/pyliblo/
 Rules-Requires-Root: no
 
