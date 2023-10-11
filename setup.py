@@ -65,8 +65,8 @@ setup(
             'scripts/dump_osc.1',
         ]),
     ],
-    setup_requires = ['cython'],
-    install_requires = ['cython'],
+    setup_requires = ['cython<0.30,>=0.29'],
+    install_requires = ['cython<0.30,>=0.29'],
     cmdclass = cmdclass,
     ext_modules = ext_modules,
     **args
