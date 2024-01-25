@@ -49,7 +49,7 @@ ext_modules = [
 
 setup(
     name = 'pyliblo',
-    version = '0.10.0',
+    version = '0.11.0-pre',
     author = 'Dominic Sacré',
     author_email = 'dominic.sacre@gmx.de',
     url = 'http://das.nasophon.de/pyliblo/',
