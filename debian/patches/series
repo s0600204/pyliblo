@@ -1,2 +1,3 @@
 test-hostname.patch
+test-nopermission.patch
 sphinx-4.2.patch

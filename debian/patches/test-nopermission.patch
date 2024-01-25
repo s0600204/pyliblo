@@ -1,0 +1,14 @@
+Description: Repeat server creation with same port
+ The test assumes that port 22 is always occupied, and thus is not available
+ to be bound to. This is not necessarily the case. The workaround is to create
+ a second server with the exact same port.
+--- a/test/test_liblo.py
++++ b/test/test_liblo.py
+@@ -239,6 +239,7 @@
+     def testNoPermission(self):
+         with self.assertRaises(liblo.ServerError):
+             s = liblo.Server('22')
++            s = liblo.Server(s.port)
+ 
+     def testRandomPort(self):
+         s = liblo.Server()
