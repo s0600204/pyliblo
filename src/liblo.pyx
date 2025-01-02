@@ -238,12 +238,12 @@ cdef int _msg_callback(const_char *path, const_char *types, lo_arg **argv,
         elif t == 't': v = _timetag_to_double(argv[i].t)
         elif t == 'b':
             if PY_VERSION_HEX >= 0x03000000:
-                v = bytes(<unsigned char*>lo_blob_dataptr(argv[i]))
+                v = bytes(<unsigned char*>lo_blob_dataptr(<lo_blob>argv[i]))
             else:
                 # convert binary data to python list
                 v = []
-                ptr = <unsigned char*>lo_blob_dataptr(argv[i])
-                size = lo_blob_datasize(argv[i])
+                ptr = <unsigned char*>lo_blob_dataptr(<lo_blob>argv[i])
+                size = lo_blob_datasize(<lo_blob>argv[i])
                 for j from 0 <= j < size:
                     v.append(ptr[j])
         else:
